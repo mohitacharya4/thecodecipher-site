@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Code Cipher</title>
+  <meta name="description" content="The Code Cipher is a product engineering studio. We design, build and ship our own software products, starting with Tabulo, a multi-tab calculator.">
+  <link rel="canonical" href="https://thecodecipher.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thecodecipher.com/">
+  <meta property="og:title" content="The Code Cipher">
+  <meta property="og:description" content="A product engineering studio. We design, build and ship our own products.">
+  <meta name="theme-color" content="#E9ECEF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E1116" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header wrap">
+    <a class="wordmark" href="/" aria-label="The Code Cipher, home">
+      <img src="assets/favicon.svg" alt="" width="28" height="28">
+      <span>The Code Cipher</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#products">Products</a>
+      <a href="#how-we-build">How we build</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap">
+      <p class="key" aria-hidden="true"><span class="key-label">key</span><span class="key-pairs" id="key-pairs"></span></p>
+      <h1 id="headline" aria-label="We build our own products, end to end.">We build our own products, end to end.</h1>
+      <p class="lede">The Code Cipher is a product engineering studio. We pick a real, everyday problem, design the fix, write the code and ship it to people ourselves.</p>
+    </section>
+
+    <section id="products" class="section wrap" aria-labelledby="products-title">
+      <h2 id="products-title" class="eyebrow">Products</h2>
+
+      <article class="product">
+        <img class="product-icon" src="assets/tabulo-icon.png" alt="" width="88" height="88">
+        <div class="product-body">
+          <div class="product-head">
+            <h3>Tabulo</h3>
+            <span class="status">Android · closed testing</span>
+          </div>
+          <p class="product-line">A calculator with tabs. Keep several calculations open side by side and use one tab’s result in another. Change a number and everything linked to it updates.</p>
+          <ul class="facts">
+            <li>Linked results between tabs</li>
+            <li>Exact decimal math: 0.1 + 0.2 = 0.3</li>
+            <li>Undo anything, even after clearing</li>
+            <li>No ads, no account, works offline</li>
+          </ul>
+          <p class="product-links">
+            <a class="button" href="https://tabulo.thecodecipher.com/">Visit Tabulo <span aria-hidden="true">→</span></a>
+            <a href="https://tabulo.thecodecipher.com/privacy.html">Privacy policy</a>
+          </p>
+        </div>
+      </article>
+
+      <p class="next">More products are in development.</p>
+    </section>
+
+    <section id="how-we-build" class="section wrap" aria-labelledby="how-title">
+      <h2 id="how-title" class="eyebrow">How we build</h2>
+      <dl class="principles">
+        <div>
+          <dt>Private by default</dt>
+          <dd>Your data stays on your device. No accounts, no tracking, no ads.</dd>
+        </div>
+        <div>
+          <dt>Works offline</dt>
+          <dd>If a product doesn’t need the internet, it doesn’t ask for it.</dd>
+        </div>
+        <div>
+          <dt>Exact, not close enough</dt>
+          <dd>We test the details people rely on, like money adding up to the cent.</dd>
+        </div>
+        <div>
+          <dt>Small and finished</dt>
+          <dd>Each product does one job well and ships complete, not as a demo.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="contact" class="section wrap" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="eyebrow">Contact</h2>
+      <p class="contact-line">Questions, feedback or a bug to report? Email <a href="mailto:thecodecipher@gmail.com">thecodecipher@gmail.com</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <span>© 2026 The Code Cipher</span>
+  </footer>
+
+  <script src="decode.js" defer></script>
+</body>
+</html>
