@@ -185,6 +185,7 @@ h1, h2, h3 { margin: 0; }
   border: 1px solid var(--rule);
   border-radius: 16px;
 }
+.product + .product { margin-top: 20px; }
 .product-icon { border-radius: 20px; }
 .product-head {
   display: flex;
