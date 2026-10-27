@@ -3,16 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Code Cipher</title>
-  <meta name="description" content="The Code Cipher is a product engineering studio. We design, build and ship our own software products, including Tabulo, a multi-tab calculator, and Optipixa, a photo compressor.">
+  <title>The Code Cipher · Tabulo and Optipixa Android apps</title>
+  <meta name="description" content="The Code Cipher builds private, offline Android apps: Tabulo, a calculator with linked tabs, and Optipixa, which compresses photos to the exact size online forms ask for.">
   <link rel="canonical" href="https://thecodecipher.com/">
+  <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Code Cipher">
+  <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://thecodecipher.com/">
-  <meta property="og:title" content="The Code Cipher">
-  <meta property="og:description" content="A product engineering studio. We design, build and ship our own products.">
+  <meta property="og:title" content="The Code Cipher · Tabulo and Optipixa Android apps">
+  <meta property="og:description" content="A product engineering studio. We design, build and ship our own private, offline apps: Tabulo and Optipixa.">
+  <meta property="og:image" content="https://thecodecipher.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Code Cipher: We build our own products, end to end. Tabulo and Optipixa.">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#E9ECEF" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0E1116" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://thecodecipher.com/#org",
+        "name": "The Code Cipher",
+        "url": "https://thecodecipher.com/",
+        "logo": "https://thecodecipher.com/assets/logo.png",
+        "email": "thecodecipher@gmail.com"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://thecodecipher.com/#website",
+        "name": "The Code Cipher",
+        "url": "https://thecodecipher.com/",
+        "publisher": { "@id": "https://thecodecipher.com/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Tabulo",
+        "url": "https://tabulo.thecodecipher.com/",
+        "description": "A calculator with tabs. Keep several calculations open side by side and use one tab's result in another.",
+        "operatingSystem": "Android",
+        "applicationCategory": "UtilitiesApplication",
+        "image": "https://thecodecipher.com/assets/tabulo-icon.png",
+        "publisher": { "@id": "https://thecodecipher.com/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Optipixa",
+        "url": "https://optipixa.thecodecipher.com/",
+        "description": "Resizes and compresses photos to the exact size online forms ask for, entirely on your phone.",
+        "operatingSystem": "Android",
+        "applicationCategory": "PhotographyApplication",
+        "image": "https://thecodecipher.com/assets/optipixa-icon.png",
+        "publisher": { "@id": "https://thecodecipher.com/#org" }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&display=swap">
@@ -38,52 +89,65 @@
       <p class="key" aria-hidden="true"><span class="key-label">key</span><span class="key-pairs" id="key-pairs"></span></p>
       <h1 id="headline" aria-label="We build our own products, end to end.">We build our own products, end to end.</h1>
       <p class="lede">The Code Cipher is a product engineering studio. We pick a real, everyday problem, design the fix, write the code and ship it to people ourselves.</p>
+      <p class="now">
+        <span class="now-label">Testing on Android</span>
+        <a href="#tabulo"><img src="assets/tabulo-icon.png" alt="" width="28" height="28">Tabulo</a>
+        <a href="#optipixa"><img src="assets/optipixa-icon.png" alt="" width="28" height="28">Optipixa</a>
+      </p>
     </section>
 
     <section id="products" class="section wrap" aria-labelledby="products-title">
-      <h2 id="products-title" class="eyebrow">Products</h2>
+      <h2 id="products-title" class="eyebrow">Products <span class="count">2</span></h2>
 
-      <article class="product">
-        <img class="product-icon" src="assets/tabulo-icon.png" alt="" width="88" height="88">
-        <div class="product-body">
+      <div class="products">
+        <article class="product" id="tabulo" style="--tint: #1f63ad">
           <div class="product-head">
-            <h3>Tabulo</h3>
-            <span class="status">Android · closed testing</span>
+            <img class="product-icon" src="assets/tabulo-icon.png" alt="" width="64" height="64">
+            <div>
+              <h3>Tabulo</h3>
+              <p class="kind">Multi-tab calculator</p>
+            </div>
           </div>
-          <p class="product-line">A calculator with tabs. Keep several calculations open side by side and use one tab’s result in another. Change a number and everything linked to it updates.</p>
+          <p class="product-line">Keep several calculations open side by side and use one tab’s result in another. Change a number and everything linked to it updates.</p>
           <ul class="facts">
             <li>Linked results between tabs</li>
-            <li>Exact decimal math: 0.1 + 0.2 = 0.3</li>
+            <li>Exact decimal math: 0.1&nbsp;+&nbsp;0.2&nbsp;=&nbsp;0.3</li>
             <li>Undo anything, even after clearing</li>
             <li>No ads, no account, works offline</li>
           </ul>
-          <p class="product-links">
-            <a class="button" href="https://tabulo.thecodecipher.com/">Visit Tabulo <span aria-hidden="true">→</span></a>
-            <a href="https://tabulo.thecodecipher.com/privacy.html">Privacy policy</a>
-          </p>
-        </div>
-      </article>
-
-      <article class="product">
-        <img class="product-icon" src="assets/optipixa-icon.png" alt="" width="88" height="88">
-        <div class="product-body">
-          <div class="product-head">
-            <h3>Optipixa</h3>
+          <div class="product-foot">
             <span class="status">Android · closed testing</span>
+            <p class="product-links">
+              <a class="button" href="https://tabulo.thecodecipher.com/">Visit Tabulo <span aria-hidden="true">→</span></a>
+              <a href="https://tabulo.thecodecipher.com/privacy.html">Privacy policy</a>
+            </p>
           </div>
-          <p class="product-line">Shrinks photos to the exact size an online form asks for, like “350×450 px, under 50 KB”, right on your phone. Nothing is uploaded.</p>
+        </article>
+
+        <article class="product" id="optipixa" style="--tint: #157150">
+          <div class="product-head">
+            <img class="product-icon" src="assets/optipixa-icon.png" alt="" width="64" height="64">
+            <div>
+              <h3>Optipixa</h3>
+              <p class="kind">Photo compressor</p>
+            </div>
+          </div>
+          <p class="product-line">Shrinks photos to the exact size an online form asks for, like “350×450&nbsp;px, under 50&nbsp;KB”, right on your phone. Nothing is uploaded.</p>
           <ul class="facts">
             <li>Set a max size in KB, get the best quality that fits</li>
             <li>Presets for passport photos, signatures and A4</li>
             <li>Crop, rotate and compress up to 50 photos at once</li>
             <li>No ads, no account, works fully offline</li>
           </ul>
-          <p class="product-links">
-            <a class="button" href="https://optipixa.thecodecipher.com/">Visit Optipixa <span aria-hidden="true">→</span></a>
-            <a href="https://optipixa.thecodecipher.com/privacy.html">Privacy policy</a>
-          </p>
-        </div>
-      </article>
+          <div class="product-foot">
+            <span class="status">Android · closed testing</span>
+            <p class="product-links">
+              <a class="button" href="https://optipixa.thecodecipher.com/">Visit Optipixa <span aria-hidden="true">→</span></a>
+              <a href="https://optipixa.thecodecipher.com/privacy.html">Privacy policy</a>
+            </p>
+          </div>
+        </article>
+      </div>
 
       <p class="next">More products are in development.</p>
     </section>
@@ -112,7 +176,10 @@
 
     <section id="contact" class="section wrap" aria-labelledby="contact-title">
       <h2 id="contact-title" class="eyebrow">Contact</h2>
-      <p class="contact-line">Questions, feedback or a bug to report? Email <a href="mailto:thecodecipher@gmail.com">thecodecipher@gmail.com</a>.</p>
+      <div class="contact-card">
+        <p class="contact-line">Questions, feedback or a bug to report? Email us.</p>
+        <a class="contact-mail" href="mailto:thecodecipher@gmail.com">thecodecipher@gmail.com <span aria-hidden="true">→</span></a>
+      </div>
     </section>
   </main>
 
