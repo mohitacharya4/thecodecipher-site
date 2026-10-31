@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Code Cipher · Tabulo and Optipixa Android apps</title>
-  <meta name="description" content="The Code Cipher builds private, offline Android apps: Tabulo, a calculator with linked tabs, and Optipixa, which compresses photos to the exact size online forms ask for.">
+  <title>The Code Cipher · Product studio and software services</title>
+  <meta name="description" content="The Code Cipher builds its own private, offline apps, Tabulo and Optipixa, and offers mobile app development, large-scale web applications, AI voice and chat agents, digital marketing and technical consultation.">
   <link rel="canonical" href="https://thecodecipher.com/">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Code Cipher">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://thecodecipher.com/">
-  <meta property="og:title" content="The Code Cipher · Tabulo and Optipixa Android apps">
-  <meta property="og:description" content="A product engineering studio. We design, build and ship our own private, offline apps: Tabulo and Optipixa.">
+  <meta property="og:title" content="The Code Cipher · Product studio and software services">
+  <meta property="og:description" content="A product engineering studio. We ship our own apps, Tabulo and Optipixa, and build mobile apps, web platforms and AI agents for businesses.">
   <meta property="og:image" content="https://thecodecipher.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -32,7 +32,18 @@
         "name": "The Code Cipher",
         "url": "https://thecodecipher.com/",
         "logo": "https://thecodecipher.com/assets/logo.png",
-        "email": "thecodecipher@gmail.com"
+        "email": "thecodecipher@gmail.com",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital marketing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile app development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Large-scale web application development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI agents for business, including voice agents" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical consultation for greenfield and legacy projects" } }
+          ]
+        }
       },
       {
         "@type": "WebSite",
@@ -72,23 +83,31 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header wrap">
+  <header class="site-header">
+   <div class="header-inner wrap">
     <a class="wordmark" href="/" aria-label="The Code Cipher, home">
       <img src="assets/favicon.svg" alt="" width="28" height="28">
       <span>The Code Cipher</span>
     </a>
     <nav aria-label="Main">
       <a href="#products">Products</a>
+      <a href="#services">Services</a>
       <a href="#how-we-build">How we build</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a class="button button--small header-cta" href="#contact">Get in touch</a>
+   </div>
   </header>
 
   <main id="main">
     <section class="hero wrap">
       <p class="key" aria-hidden="true"><span class="key-label">key</span><span class="key-pairs" id="key-pairs"></span></p>
       <h1 id="headline" aria-label="We build our own products, end to end.">We build our own products, end to end.</h1>
-      <p class="lede">The Code Cipher is a product engineering studio. We pick a real, everyday problem, design the fix, write the code and ship it to people ourselves.</p>
+      <p class="lede">The Code Cipher is a product engineering studio. We pick a real, everyday problem, design the fix, write the code and ship it to people ourselves. We also build this way for other businesses.</p>
+      <p class="hero-actions">
+        <a class="button" href="#contact">Start a project <span aria-hidden="true">→</span></a>
+        <a class="button button--ghost" href="#services">See our services</a>
+      </p>
       <p class="now">
         <span class="now-label">Testing on Android</span>
         <a href="#tabulo"><img src="assets/tabulo-icon.png" alt="" width="28" height="28">Tabulo</a>
@@ -149,7 +168,75 @@
         </article>
       </div>
 
-      <p class="next">More products are in development.</p>
+      <p class="next">More products are in development. Want something like this built for your business? <a href="#services">See our services</a>.</p>
+    </section>
+
+    <section id="services" class="section wrap" aria-labelledby="services-title">
+      <h2 id="services-title" class="eyebrow">Services <span class="count">5</span></h2>
+      <p class="section-intro">The same team that ships our own products builds for yours: from a first prototype to a system that serves real users at scale. <a href="#products">See what we’ve shipped</a>.</p>
+
+      <ol class="services">
+        <li class="service service--featured">
+          <div class="service-top">
+            <span class="service-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+            <span class="service-num" aria-hidden="true">01</span>
+          </div>
+          <div class="featured-grid">
+            <div>
+              <h3>Digital marketing</h3>
+              <p>SEO, content and campaigns that bring the right people to your product, measured against the numbers you care about, not vanity metrics.</p>
+              <a class="button button--light" href="mailto:thecodecipher@gmail.com?subject=Enquiry%3A%20Digital%20marketing&amp;body=Hi%2C%0A%0AI%27d%20like%20to%20talk%20about%20digital%20marketing%20%28SEO%2C%20content%20or%20paid%20campaigns%29.%0A%0AWhat%20we%20need%3A%0A%0ATimeline%3A%0A%0ARough%20budget%3A%0A%0ACompany%20/%20website%3A%0A%0AThanks%2C%0A">Enquire about marketing <span aria-hidden="true">→</span></a>
+            </div>
+            <ul class="featured-points">
+              <li><strong>Search &amp; SEO</strong> Technical audits, site structure and the keywords people actually search for.</li>
+              <li><strong>Content</strong> Pages, posts and launch copy that rank and convert.</li>
+              <li><strong>Paid campaigns</strong> Google and Meta ads, tracked all the way to sign-ups and sales.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="service service--mobile">
+          <div class="service-top">
+            <span class="service-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18h2"/></svg></span>
+            <span class="service-num" aria-hidden="true">02</span>
+          </div>
+          <h3>Mobile app development</h3>
+          <p>iOS and Android apps, from first prototype to store release, built to work on small phones, large text sizes and patchy networks.</p>
+          <ul class="tags" aria-label="Includes"><li>iOS &amp; Android</li><li>React Native</li><li>Store release</li></ul>
+          <a class="enquire" href="mailto:thecodecipher@gmail.com?subject=Enquiry%3A%20Mobile%20app%20development&amp;body=Hi%2C%0A%0AI%27d%20like%20to%20talk%20about%20a%20mobile%20app.%0A%0AWhat%20we%20need%3A%0A%0ATimeline%3A%0A%0ARough%20budget%3A%0A%0ACompany%20/%20website%3A%0A%0AThanks%2C%0A">Enquire <span class="visually-hidden">about mobile app development</span> <span aria-hidden="true">→</span></a>
+        </li>
+        <li class="service service--ai">
+          <div class="service-top">
+            <span class="service-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4"/><path d="M8 7v10"/><path d="M12 4v16"/><path d="M16 8v8"/><path d="M20 11v2"/></svg></span>
+            <span class="service-num" aria-hidden="true">03</span>
+          </div>
+          <h3>AI agents for business</h3>
+          <p>Voice and chat agents that answer calls, book appointments, qualify leads and handle support, connected to the tools you already use.</p>
+          <ul class="tags" aria-label="Includes"><li>Voice agents</li><li>Chat &amp; support</li><li>Automation</li></ul>
+          <a class="enquire" href="mailto:thecodecipher@gmail.com?subject=Enquiry%3A%20AI%20agents&amp;body=Hi%2C%0A%0AI%27d%20like%20to%20talk%20about%20an%20AI%20voice%20or%20chat%20agent.%0A%0AWhat%20we%20need%3A%0A%0ATimeline%3A%0A%0ARough%20budget%3A%0A%0ACompany%20/%20website%3A%0A%0AThanks%2C%0A">Enquire <span class="visually-hidden">about AI agents</span> <span aria-hidden="true">→</span></a>
+        </li>
+        <li class="service service--web">
+          <div class="service-top">
+            <span class="service-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><path d="M7 13l2 2-2 2"/><path d="M12 17h4"/></svg></span>
+            <span class="service-num" aria-hidden="true">04</span>
+          </div>
+          <h3>Large-scale web applications</h3>
+          <p>Web platforms built to handle real traffic: architecture, APIs, data, deployment and the monitoring that keeps them running.</p>
+          <ul class="tags" aria-label="Includes"><li>Architecture</li><li>APIs &amp; data</li><li>Cloud &amp; DevOps</li></ul>
+          <a class="enquire" href="mailto:thecodecipher@gmail.com?subject=Enquiry%3A%20Web%20application&amp;body=Hi%2C%0A%0AI%27d%20like%20to%20talk%20about%20a%20web%20application.%0A%0AWhat%20we%20need%3A%0A%0ATimeline%3A%0A%0ARough%20budget%3A%0A%0ACompany%20/%20website%3A%0A%0AThanks%2C%0A">Enquire <span class="visually-hidden">about web applications</span> <span aria-hidden="true">→</span></a>
+        </li>
+        <li class="service service--consult">
+          <div class="service-top">
+            <span class="service-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
+            <span class="service-num" aria-hidden="true">05</span>
+          </div>
+          <h3>Technical consultation</h3>
+          <p>Starting fresh? We help you choose the stack and architecture before code is written. Running legacy systems? We audit, modernise and migrate them without stopping the business.</p>
+          <ul class="tags" aria-label="Includes"><li>Greenfield</li><li>Legacy modernisation</li><li>Audits</li></ul>
+          <a class="enquire" href="mailto:thecodecipher@gmail.com?subject=Enquiry%3A%20Technical%20consultation&amp;body=Hi%2C%0A%0AI%27d%20like%20to%20talk%20about%20technical%20consultation%20%28new%20or%20legacy%20project%29.%0A%0AWhat%20we%20need%3A%0A%0ATimeline%3A%0A%0ARough%20budget%3A%0A%0ACompany%20/%20website%3A%0A%0AThanks%2C%0A">Enquire <span class="visually-hidden">about technical consultation</span> <span aria-hidden="true">→</span></a>
+        </li>
+      </ol>
+
+      <p class="services-cta"><a class="button" href="#contact">Start a project <span aria-hidden="true">→</span></a></p>
     </section>
 
     <section id="how-we-build" class="section wrap" aria-labelledby="how-title">
@@ -177,8 +264,14 @@
     <section id="contact" class="section wrap" aria-labelledby="contact-title">
       <h2 id="contact-title" class="eyebrow">Contact</h2>
       <div class="contact-card">
-        <p class="contact-line">Questions, feedback or a bug to report? Email us.</p>
-        <a class="contact-mail" href="mailto:thecodecipher@gmail.com">thecodecipher@gmail.com <span aria-hidden="true">→</span></a>
+        <div class="contact-text">
+          <p class="contact-line">Have a project in mind? Tell us about it.</p>
+          <p class="contact-sub">A few lines on what you need, your timeline and a rough budget is enough to start. Questions or feedback about our apps are welcome too.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button button--light" href="mailto:thecodecipher@gmail.com?subject=Project%20enquiry&amp;body=Hi%2C%0A%0AI%27d%20like%20to%20talk%20about%20a%20project.%0A%0AWhat%20we%20need%3A%0A%0ATimeline%3A%0A%0ARough%20budget%3A%0A%0ACompany%20/%20website%3A%0A%0AThanks%2C%0A">Email us about a project <span aria-hidden="true">→</span></a>
+          <a class="contact-mail" href="mailto:thecodecipher@gmail.com">thecodecipher@gmail.com</a>
+        </div>
       </div>
     </section>
   </main>

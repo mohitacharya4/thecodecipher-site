@@ -76,3 +76,12 @@
     });
   }
 })();
+
+// Show a divider under the sticky header once the page scrolls.
+(function () {
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+  function update() { header.classList.toggle('is-stuck', window.scrollY > 4); }
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+})();
