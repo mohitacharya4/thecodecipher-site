@@ -564,7 +564,33 @@ section[id], article[id] { scroll-margin-top: 84px; }
   .services { grid-template-columns: minmax(0, 1fr); }
   .service { grid-column: 1 / -1; }
 }
-.services-cta { margin: 32px 0 0; }
+.services-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin: 32px 0 0;
+}
+.cta-note {
+  font: 500 13px/1.4 var(--mono);
+  color: var(--muted);
+}
+.contact-reply {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font: 500 13px/1.4 var(--mono);
+  opacity: 0.9;
+}
+.reply-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 3px rgb(74 222 128 / 0.25);
+}
 
 /* Principles */
 .principles {
