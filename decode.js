@@ -85,3 +85,75 @@
   update();
   window.addEventListener('scroll', update, { passive: true });
 })();
+
+// Scroll motion: sections and cards rise into view as you reach them, and each
+// section label decodes from cipher text the first time it appears.
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var PLAIN = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var CIPHER = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  var STEP = 45;
+
+  function encode(ch) {
+    var i = PLAIN.indexOf(ch.toUpperCase());
+    if (i < 0) return ch;
+    return ch === ch.toUpperCase() ? CIPHER[i] : CIPHER[i].toLowerCase();
+  }
+
+  // Decode the label's own text, leaving child elements like the count alone.
+  function decode(label) {
+    var node = label.firstChild;
+    if (!node || node.nodeType !== 3) return;
+    var plain = node.nodeValue;
+    label.setAttribute('aria-label', label.textContent.replace(/\s+/g, ' ').trim());
+    var chars = plain.split('');
+    node.nodeValue = chars.map(encode).join('');
+    chars.forEach(function (ch, i) {
+      setTimeout(function () {
+        node.nodeValue = plain.slice(0, i + 1) + chars.slice(i + 1).map(encode).join('');
+        if (i === chars.length - 1) label.removeAttribute('aria-label');
+      }, 150 + i * STEP);
+    });
+  }
+
+  var groups = [
+    '.section .eyebrow',
+    '.section-intro',
+    '.products > .product',
+    '.next',
+    '.services > .service',
+    '.services-cta',
+    '.principles > div',
+    '.contact-card'
+  ];
+
+  var fold = window.innerHeight;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      observer.unobserve(el);
+      if (el.classList.contains('eyebrow')) decode(el);
+      if (el.classList.contains('reveal')) el.classList.add('is-in');
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+  groups.forEach(function (selector) {
+    document.querySelectorAll(selector).forEach(function (el, i) {
+      // Only hide what is still below the fold, so nothing already on screen flickers.
+      if (el.getBoundingClientRect().top < fold) return;
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', Math.min(i, 4) * 80 + 'ms');
+      // Once it has arrived, hand transitions back to the hover styles.
+      el.addEventListener('transitionend', function done(e) {
+        if (e.target !== el || e.propertyName !== 'opacity') return;
+        el.classList.remove('reveal', 'is-in');
+        el.style.removeProperty('--reveal-delay');
+        el.removeEventListener('transitionend', done);
+      });
+      observer.observe(el);
+    });
+  });
+})();

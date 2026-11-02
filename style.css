@@ -255,6 +255,45 @@ section[id], article[id] { scroll-margin-top: 84px; }
   transform: translateY(-2px);
   box-shadow: 0 12px 32px -18px color-mix(in srgb, var(--tint) 70%, transparent);
 }
+/* Product screenshots: two phones that fan out when the card is hovered */
+.shots {
+  position: relative;
+  height: clamp(220px, 30vw, 280px);
+  margin: 0 0 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% 110%, color-mix(in srgb, var(--tint) 30%, transparent), transparent 70%),
+    color-mix(in srgb, var(--tint) 9%, var(--surface));
+}
+.phone {
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  width: clamp(112px, 13vw, 138px);
+  margin: 0;
+  padding: 5px;
+  border-radius: 22px;
+  background: #11151b;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08), 0 18px 36px -16px rgb(10 14 22 / 0.55);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 2;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 17px;
+}
+.phone--back { transform: translateX(-78%) translateY(18px) rotate(-8deg); opacity: 0.92; }
+.phone--front { transform: translateX(-30%) rotate(4deg); }
+.product:hover .phone--back,
+.product:focus-within .phone--back { transform: translateX(-100%) translateY(10px) rotate(-12deg); }
+.product:hover .phone--front,
+.product:focus-within .phone--front { transform: translateX(-12%) translateY(-8px) rotate(2deg); }
+
 .product-head {
   display: flex;
   align-items: center;
@@ -863,4 +902,17 @@ section[id], article[id] { scroll-margin-top: 84px; }
   .chat-typing span { animation: none; opacity: 0.6; }
   .key-pairs span, .product, .service, .now a, .site-header, .enquire span { transition: none; }
   .product:hover, .service:hover { transform: none; }
+  .phone { transition: none; }
+}
+
+/* Scroll reveal (added by decode.js only when motion is allowed) */
+.reveal {
+  opacity: 0;
+  translate: 0 28px;
+  transition: opacity 0.6s ease, translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-in { opacity: 1; translate: 0 0; }
+@media print {
+  .reveal { opacity: 1; translate: none; }
 }
