@@ -1,0 +1,125 @@
+# Blog editor (Sveltia CMS). Posts are saved to content/posts/<slug>/index.md with
+# their images beside them, and build/build.mjs turns them into static pages.
+backend:
+  name: github
+  repo: mohitacharya4/thecodecipher-site
+  branch: main
+  # Sveltia CMS Authenticator Worker on Cloudflare (handles the GitHub login).
+  # Cloudflare Worker "thecodecipher-cms-auth" (from github.com/sveltia/sveltia-cms-auth).
+  base_url: https://thecodecipher-cms-auth.thecodecipher-studio.workers.dev
+  # The site repo is public, so only ask GitHub for public-repo access.
+  auth_scope: public_repo
+  commit_messages:
+    create: 'Add blog post: {{slug}}'
+    update: 'Update blog post: {{slug}}'
+    delete: 'Delete blog post: {{slug}}'
+    uploadMedia: 'Upload image: {{path}}'
+    deleteMedia: 'Delete image: {{path}}'
+
+site_url: https://thecodecipher.com
+display_url: https://thecodecipher.com/blog/
+logo_url: /assets/favicon.svg
+
+media_folder: /assets/uploads
+public_folder: /assets/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: posts
+    label: Blog posts
+    label_singular: Blog post
+    description: >-
+      Write for the reader's question. Lead with the answer (the Short answer box), use
+      question-style headings, and add an FAQ. Saving publishes the post within about two
+      minutes, unless "Draft" is on.
+    folder: content/posts
+    path: '{{slug}}/index'
+    media_folder: ''
+    public_folder: ''
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} · {{date}}'
+    sortable_fields: [date, title]
+    preview_path: /blog/{{slug}}/
+    fields:
+      - name: title
+        label: Title
+        widget: string
+        minlength: 10
+        maxlength: 70
+        hint: >-
+          The question or promise the post answers, in the words people search with.
+          Under 60 characters shows in full on Google.
+      - name: description
+        label: Meta description
+        widget: text
+        minlength: 70
+        maxlength: 160
+        hint: Shown under the title in search results. One or two sentences, 120 to 160 characters.
+      - name: summary
+        label: Short answer
+        widget: text
+        minlength: 120
+        maxlength: 420
+        hint: >-
+          Shown at the top of the post. Answer the title's question directly in 40 to 60
+          words. This is the part AI assistants and Google quote, so make it self-contained.
+      - name: date
+        label: Published
+        widget: datetime
+        type: date
+      - name: updated
+        label: Last updated
+        widget: datetime
+        type: date
+        required: false
+        hint: Set this when you make a meaningful change. Fresh dates help rankings.
+      - name: author
+        label: Author
+        widget: string
+        default: The Code Cipher
+      - name: tags
+        label: Topics
+        widget: list
+        required: false
+        hint: One to three topics, for example "Android", "SEO", "AI agents".
+      - name: cover
+        label: Cover image
+        widget: image
+        required: false
+        hint: 1600×900 or larger, JPG or WebP under 300 KB. Without one, a cipher-style cover is generated.
+      - name: cover_alt
+        label: Cover image description (alt text)
+        widget: string
+        required: false
+        hint: Describe what the image shows, for screen readers and image search. Needed whenever there is a cover image.
+      - name: body
+        label: Post
+        widget: richtext
+        hint: >-
+          Use Heading 2 for main sections (they form the table of contents) and Heading 3
+          inside them. Phrase headings as questions where it fits. Link to related posts
+          and to the products or services.
+      - name: faq
+        label: Frequently asked questions
+        label_singular: Question
+        widget: list
+        required: false
+        summary: '{{fields.question}}'
+        hint: Two to five real questions people ask about this topic, each answered in 1 to 3 sentences.
+        fields:
+          - name: question
+            label: Question
+            widget: string
+          - name: answer
+            label: Answer
+            widget: text
+      - name: draft
+        label: Draft (hidden from the site)
+        widget: boolean
+        default: false
+        required: false

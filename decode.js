@@ -1,5 +1,6 @@
 // Hero signature: the headline loads as a substitution cipher and decodes
 // letter by letter, lighting up each pair in the key as it is used.
+// Blog titles marked [data-decode] get the same effect, without the key.
 (function () {
   var PLAIN = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var CIPHER = 'QWERTYUIOPASDFGHJKLZXCVBNM';
@@ -7,16 +8,21 @@
   var STEP = 55;
 
   var keyEl = document.getElementById('key-pairs');
-  var headline = document.getElementById('headline');
-  if (!keyEl || !headline) return;
+  var headline = document.getElementById('headline') || document.querySelector('[data-decode]');
+  if (!headline) return;
+  // Long titles decode faster so the effect never drags.
+  var letterCount = headline.textContent.replace(/[^a-z]/gi, '').length;
+  if (letterCount > 30) STEP = Math.max(18, Math.round(1600 / letterCount));
 
   var pairs = {};
-  PLAIN.split('').forEach(function (p, i) {
-    var span = document.createElement('span');
-    span.textContent = p + '→' + CIPHER[i];
-    keyEl.appendChild(span);
-    pairs[p] = span;
-  });
+  if (keyEl) {
+    PLAIN.split('').forEach(function (p, i) {
+      var span = document.createElement('span');
+      span.textContent = p + '→' + CIPHER[i];
+      keyEl.appendChild(span);
+      pairs[p] = span;
+    });
+  }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -70,6 +76,7 @@
         l.el.textContent = l.plain;
         l.el.classList.remove('enc');
         var pair = pairs[l.plain.toUpperCase()];
+        if (!pair) return;
         pair.classList.add('hit');
         setTimeout(function () { pair.classList.remove('hit'); }, 500);
       }, START_DELAY + i * STEP);
@@ -126,6 +133,9 @@
     '.services > .service',
     '.services-cta',
     '.principles > div',
+    '.writing-grid > .post-card',
+    '.post-grid > .post-card',
+    '.faq',
     '.contact-card'
   ];
 
