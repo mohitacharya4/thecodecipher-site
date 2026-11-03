@@ -776,7 +776,7 @@ section[id], article[id] { scroll-margin-top: 84px; }
   overflow-wrap: anywhere;
   transition: opacity 0.3s, letter-spacing 0.4s;
 }
-.post-card:hover .cipher-cover span { letter-spacing: -0.015em; opacity: 1; }
+.post-card:hover .cipher-cover span, .cipher-cover.is-plain span { opacity: 1; }
 .post-card-body {
   display: flex;
   flex: 1 1 auto;

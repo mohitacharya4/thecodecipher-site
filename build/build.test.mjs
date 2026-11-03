@@ -166,3 +166,8 @@ test('CSS and JS links carry a content version so browsers never use stale copie
   const v = (html) => html.match(/style\.css\?v=([0-9a-f]{8})/)[1];
   assert.equal(v(home), v(post), 'same file, same version everywhere');
 });
+
+test('cipher covers carry the plain title for the hover decode', () => {
+  const html = readFileSync(join(out, 'blog', 'index.html'), 'utf8');
+  assert.match(html, /<span class="cipher-cover" aria-hidden="true"><span data-plain="Why exact decimal math matters &lt;really&gt;">/);
+});

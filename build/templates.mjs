@@ -118,7 +118,7 @@ function cover(post, { eager = false } = {}) {
     return `<img src="${esc(post.coverUrl)}" alt="${esc(post.coverAlt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
   }
   // No cover: a typographic cover showing the title in the site's cipher.
-  return `<span class="cipher-cover" aria-hidden="true"><span>${esc(encipher(post.title))}</span></span>`;
+  return `<span class="cipher-cover" aria-hidden="true"><span data-plain="${esc(post.title)}">${esc(encipher(post.title))}</span></span>`;
 }
 
 function meta(post) {
