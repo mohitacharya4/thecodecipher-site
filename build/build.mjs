@@ -5,6 +5,7 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
 import matter from 'gray-matter';
 import { Marked } from 'marked';
 import { SITE, esc, homeSection, postPage, blogIndexPage } from './templates.mjs';
@@ -212,6 +213,32 @@ function injectHome(html, posts) {
   return out;
 }
 
+// Add ?v=<content hash> to stylesheet and script links in every page, so a
+// release is picked up at once instead of after the browser cache expires.
+const VERSIONED = ['style.css', 'blog.css', 'decode.js', 'chat.js', 'blog.js'];
+
+function htmlFiles(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) return htmlFiles(p);
+    return e.name.endsWith('.html') ? [p] : [];
+  });
+}
+
+function versionAssets(out) {
+  const versions = VERSIONED
+    .filter((name) => existsSync(join(out, name)))
+    .map((name) => [name, createHash('sha256').update(readFileSync(join(out, name))).digest('hex').slice(0, 8)]);
+  for (const file of htmlFiles(out)) {
+    let html = readFileSync(file, 'utf8');
+    for (const [name, v] of versions) {
+      const re = new RegExp(`((?:href|src)=")(/?${name.replace(/\./g, '\\.')})(")`, 'g');
+      html = html.replace(re, `$1$2?v=${v}$3`);
+    }
+    writeFileSync(file, html);
+  }
+}
+
 export function build({ root, out, today = new Date().toISOString().slice(0, 10) }) {
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
@@ -241,6 +268,7 @@ export function build({ root, out, today = new Date().toISOString().slice(0, 10)
   writeFileSync(join(out, 'feed.xml'), feed(posts, today));
   writeFileSync(join(out, 'llms.txt'), llms(posts));
   writeFileSync(join(out, 'robots.txt'), robots());
+  versionAssets(out);
 
   return posts;
 }

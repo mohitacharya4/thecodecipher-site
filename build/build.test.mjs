@@ -26,7 +26,7 @@ before(() => {
   root = mkdtempSync(join(tmpdir(), 'tcc-site-'));
   out = join(root, '_site');
   writeFileSync(join(root, 'index.html'),
-    '<html><head><title>Home</title></head><body><nav><a href="#x">X</a></nav><main>\n<!-- blog:start -->\n<!-- blog:end -->\n</main></body></html>');
+    '<html><head><title>Home</title><link rel="stylesheet" href="style.css"></head><body><nav><a href="#x">X</a></nav><main>\n<!-- blog:start -->\n<!-- blog:end -->\n</main></body></html>');
   writeFileSync(join(root, 'style.css'), 'body{}');
   writeFileSync(join(root, 'robots.txt'), 'User-agent: *\nAllow: /\n');
   mkdirSync(join(root, 'assets'));
@@ -155,4 +155,14 @@ test('a cover image without alt text fails the build', () => {
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'index.md'), '---\ntitle: T\ndescription: D\nsummary: S\ndate: 2026-10-01\ncover: c.jpg\n---\nBody');
   assert.throws(() => build({ root: r, out: join(r, '_site') }), /cover_alt/);
+});
+
+test('CSS and JS links carry a content version so browsers never use stale copies', () => {
+  const home = readFileSync(join(out, 'index.html'), 'utf8');
+  assert.match(home, /href="style\.css\?v=[0-9a-f]{8}"/);
+  const post = readFileSync(join(out, 'blog', 'older-post', 'index.html'), 'utf8');
+  assert.match(post, /href="\/style\.css\?v=[0-9a-f]{8}"/);
+  assert.match(post, /src="\/decode\.js\?v=[0-9a-f]{8}"|src="\/decode\.js"/);
+  const v = (html) => html.match(/style\.css\?v=([0-9a-f]{8})/)[1];
+  assert.equal(v(home), v(post), 'same file, same version everywhere');
 });
