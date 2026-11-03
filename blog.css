@@ -73,10 +73,9 @@
   .post-grid--index > .post-card--featured { grid-column: 1 / -1; }
   .post-grid--index > .post-card--featured .post-card-link {
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   }
-  .post-grid--index > .post-card--featured .post-card-cover { aspect-ratio: auto; min-height: 340px; }
-  .post-grid--index > .post-card--featured .post-card-body { justify-content: center; padding: clamp(24px, 4vw, 44px); }
+  .post-grid--index > .post-card--featured .post-card-cover { aspect-ratio: auto; min-height: 320px; }
 }
 
 /* Post */

@@ -45,7 +45,12 @@ export function displayDate(iso) {
 
 const FONTS = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&display=swap';
 
-function head({ title, description, url, image, imageAlt, type, extra = '' }) {
+function head({ title, description, url, image, imageAlt, imageWidth, imageHeight, type, extra = '' }) {
+  const imageSize = imageWidth && imageHeight
+    ? `
+  <meta property="og:image:width" content="${imageWidth}">
+  <meta property="og:image:height" content="${imageHeight}">`
+    : '';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -61,7 +66,7 @@ function head({ title, description, url, image, imageAlt, type, extra = '' }) {
   <meta property="og:url" content="${esc(url)}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
-  <meta property="og:image" content="${esc(image)}">
+  <meta property="og:image" content="${esc(image)}">${imageSize}
   <meta property="og:image:alt" content="${esc(imageAlt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#E9ECEF" media="(prefers-color-scheme: light)">
@@ -115,7 +120,8 @@ function footer() {
 
 function cover(post, { eager = false } = {}) {
   if (post.cover) {
-    return `<img src="${esc(post.coverUrl)}" alt="${esc(post.coverAlt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+    const size = post.coverWidth ? ` width="${post.coverWidth}" height="${post.coverHeight}"` : '';
+    return `<img src="${esc(post.coverUrl)}" alt="${esc(post.coverAlt)}"${size} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
   }
   // No cover: a typographic cover showing the title in the site's cipher.
   return `<span class="cipher-cover" aria-hidden="true"><span data-plain="${esc(post.title)}">${esc(encipher(post.title))}</span></span>`;
@@ -236,6 +242,8 @@ export function postPage(post, related) {
     url: post.url,
     image: post.cover ? post.coverAbs : SITE.ogImage,
     imageAlt: post.cover ? post.coverAlt : post.title,
+    imageWidth: post.cover ? post.coverWidth : 1200,
+    imageHeight: post.cover ? post.coverHeight : 630,
     type: 'article',
     extra,
   })}

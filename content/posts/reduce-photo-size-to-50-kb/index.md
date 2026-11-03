@@ -7,6 +7,8 @@ author: The Code Cipher
 tags:
   - Guides
   - Photos
+cover: cover.jpg
+cover_alt: "Illustration of a 4.2 MB phone photo being cropped, resized and compressed into a 350 × 450 pixel photo of 48 KB, under a 50 KB limit"
 faq:
   - question: Does reducing a photo to 50 KB make it blurry?
     answer: "Not if you resize first. At form sizes like 350×450 pixels, a JPG at medium quality fits under 50 KB and looks sharp. Blur comes from squeezing a full-size phone photo into 50 KB by quality alone."

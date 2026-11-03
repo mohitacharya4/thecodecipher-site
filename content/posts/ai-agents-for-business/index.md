@@ -7,6 +7,8 @@ author: The Code Cipher
 tags:
   - AI agents
   - Guides
+cover: cover.jpg
+cover_alt: "Illustration of a phone call, a website chat, a message and an email flowing into an AI agent, which turns them into a booked appointment and rising revenue"
 faq:
   - question: Will customers know they are talking to an AI?
     answer: "They should. A good agent says it is an AI assistant at the start and offers a person when asked. Being upfront builds trust, and in some places it is a legal requirement."

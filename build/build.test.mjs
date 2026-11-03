@@ -45,7 +45,14 @@ before(() => {
     '  - question: "Does it upload my photo?"',
     '    answer: "No. Everything runs **on your phone**."',
   ].join('\n'));
-  writeFileSync(join(a, 'cover.jpg'), 'img');
+  // A minimal PNG header: signature + IHDR declaring 1600 x 900.
+  const png = Buffer.alloc(33);
+  Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(png, 0);
+  png.writeUInt32BE(13, 8);
+  png.write('IHDR', 12, 'ascii');
+  png.writeUInt32BE(1600, 16);
+  png.writeUInt32BE(900, 20);
+  writeFileSync(join(a, 'cover.jpg'), png);
 
   post('newer-post', [
     'title: "Why exact decimal math matters <really>"',
@@ -170,4 +177,13 @@ test('CSS and JS links carry a content version so browsers never use stale copie
 test('cipher covers carry the plain title for the hover decode', () => {
   const html = readFileSync(join(out, 'blog', 'index.html'), 'utf8');
   assert.match(html, /<span class="cipher-cover" aria-hidden="true"><span data-plain="Why exact decimal math matters &lt;really&gt;">/);
+});
+
+test('cover images get their real width and height, on the page and for link previews', () => {
+  const html = readFileSync(join(out, 'blog', 'older-post', 'index.html'), 'utf8');
+  assert.match(html, /<img src="\/blog\/older-post\/cover\.jpg"[^>]* width="1600" height="900"/);
+  assert.match(html, /<meta property="og:image:width" content="1600">/);
+  assert.match(html, /<meta property="og:image:height" content="900">/);
+  const index = readFileSync(join(out, 'blog', 'index.html'), 'utf8');
+  assert.match(index, /cover\.jpg"[^>]* width="1600" height="900"/);
 });

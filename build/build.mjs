@@ -26,6 +26,29 @@ function isoDate(value, field, file) {
   return d.toISOString().slice(0, 10);
 }
 
+// Read an image's pixel size from its PNG or JPEG header, so pages can
+// reserve space for it (no layout shift) and declare it for link previews.
+export function imageSize(file) {
+  const b = readFileSync(file);
+  if (b.length >= 24 && b.readUInt32BE(0) === 0x89504e47) {
+    return { width: b.readUInt32BE(16), height: b.readUInt32BE(20) };
+  }
+  if (b.length >= 4 && b[0] === 0xff && b[1] === 0xd8) {
+    let i = 2;
+    while (i + 9 < b.length) {
+      if (b[i] !== 0xff) { i++; continue; }
+      const marker = b[i + 1];
+      const length = b.readUInt16BE(i + 2);
+      // SOF0-SOF15 hold the frame size; C4 (DHT), C8 (JPG) and CC (DAC) do not.
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+        return { width: b.readUInt16BE(i + 7), height: b.readUInt16BE(i + 5) };
+      }
+      i += 2 + length;
+    }
+  }
+  return null;
+}
+
 function slugify(text) {
   return text.toLowerCase().replace(/<[^>]+>/g, '').replace(/&[a-z#0-9]+;/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'section';
@@ -94,8 +117,14 @@ export function loadPosts(root) {
         return { question: String(f.question), answerHtml, answerText: plainText(answerHtml) };
       });
 
+    const coverFile = data.cover ? join(dir, slug, String(data.cover).replace(/^\.?\//, '')) : '';
+    if (coverFile && !existsSync(coverFile)) throw new Error(`${file}: cover image "${data.cover}" not found`);
+    const size = coverFile ? imageSize(coverFile) : null;
+
     posts.push({
       slug,
+      coverWidth: size ? size.width : 0,
+      coverHeight: size ? size.height : 0,
       dir: join(dir, slug),
       title: String(data.title),
       description: String(data.description),
