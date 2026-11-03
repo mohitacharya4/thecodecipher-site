@@ -240,3 +240,33 @@
     observer.observe(el);
   });
 })();
+
+// Mobile menu: the menu button opens and closes the main nav below 720px.
+(function () {
+  var header = document.querySelector('.site-header');
+  var button = header && header.querySelector('.menu-toggle');
+  var nav = header && header.querySelector('#site-nav');
+  if (!button || !nav) return;
+
+  function setOpen(open) {
+    header.classList.toggle('menu-open', open);
+    button.setAttribute('aria-expanded', String(open));
+    button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  function isOpen() { return button.getAttribute('aria-expanded') === 'true'; }
+
+  button.addEventListener('click', function () { setOpen(!isOpen()); });
+  // Close after choosing a link, on Escape, or on a tap outside the header.
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isOpen()) { setOpen(false); button.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (isOpen() && !header.contains(e.target)) setOpen(false);
+  });
+  // Rotating to a wide screen shows the normal nav, so reset the menu.
+  var wide = window.matchMedia('(min-width: 720px)');
+  var reset = function (m) { if (m.matches) setOpen(false); };
+  if (wide.addEventListener) wide.addEventListener('change', reset);
+  else if (wide.addListener) wide.addListener(reset);
+})();

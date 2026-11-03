@@ -187,3 +187,10 @@ test('cover images get their real width and height, on the page and for link pre
   const index = readFileSync(join(out, 'blog', 'index.html'), 'utf8');
   assert.match(index, /cover\.jpg"[^>]* width="1600" height="900"/);
 });
+
+test('every page header has a mobile menu button wired to the main nav', () => {
+  const html = readFileSync(join(out, 'blog', 'older-post', 'index.html'), 'utf8');
+  assert.match(html, /<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">/);
+  assert.match(html, /<nav id="site-nav" aria-label="Main">/);
+  assert.match(html, /class="menu-cta[^"]*" href="\/#contact"/);
+});
