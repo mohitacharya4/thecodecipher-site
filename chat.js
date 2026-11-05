@@ -89,7 +89,14 @@
   });
   form.addEventListener('submit', submit);
 
+  // Count chat use in Umami analytics, if its script has loaded.
+  var sentFirst = false;
+  function track(name) {
+    try { if (window.umami) window.umami.track(name); } catch (e) {}
+  }
+
   function open() {
+    track('Chat: open');
     panel.hidden = false;
     launcher.setAttribute('aria-expanded', 'true');
     document.documentElement.classList.add('chat-open');
@@ -106,6 +113,7 @@
 
   function askQuick(item) {
     if (busy) return;
+    track('Chat: quick question');
     chips.hidden = true;
     addMessage('user', item.q);
     addMessage('assistant', item.a);
@@ -122,6 +130,7 @@
     autosize();
     addMessage('user', text);
     history.push({ role: 'user', content: text });
+    if (!sentFirst) { sentFirst = true; track('Chat: first message'); }
     ask();
   }
 

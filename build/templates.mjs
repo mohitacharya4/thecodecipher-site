@@ -81,6 +81,7 @@ ${extra}
   <link rel="stylesheet" href="${FONTS}">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/blog.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="e550058b-3d7d-4698-8478-ecbff53038be" data-domains="thecodecipher.com"></script>
 </head>`;
 }
 
@@ -286,8 +287,8 @@ ${header()}
           <p class="contact-sub">We design, build and ship mobile apps, web platforms and AI agents. Tell us what you need and we reply within 24 hours.</p>
         </div>
         <div class="contact-actions">
-          <a class="button button--light" href="https://cal.com/thecodecipher/15min" target="_blank" rel="noopener">Book a 15-min call <span aria-hidden="true">→</span><span class="visually-hidden"> (opens Cal.com in a new tab)</span></a>
-          <a class="button button--on-band" href="/#contact">Get in touch <span aria-hidden="true">→</span></a>
+          <a class="button button--light" data-umami-event="Book call: blog post" href="https://cal.com/thecodecipher/15min" target="_blank" rel="noopener">Book a 15-min call <span aria-hidden="true">→</span><span class="visually-hidden"> (opens Cal.com in a new tab)</span></a>
+          <a class="button button--on-band" data-umami-event="Contact: blog post" href="/#contact">Get in touch <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
