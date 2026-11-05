@@ -5,7 +5,7 @@ export const SITE = {
   url: 'https://thecodecipher.com',
   name: 'The Code Cipher',
   orgId: 'https://thecodecipher.com/#org',
-  description: 'The Code Cipher is a product engineering studio. We build our own private, offline apps, Tabulo and Optipixa, and build mobile apps, web platforms and AI agents for businesses.',
+  description: 'The Code Cipher is a product engineering studio. We build our own private products, the Free Invoice Generator, Tabulo and Optipixa, and build mobile apps, web platforms and AI agents for businesses.',
   ogImage: 'https://thecodecipher.com/assets/og-image.png',
   chatEndpoint: 'https://thecodecipher-chat.thecodecipher-studio.workers.dev/chat',
   // Last time the hand-written homepage changed. Bump when editing index.html.

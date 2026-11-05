@@ -9,15 +9,15 @@
   var MAX_CHARS = 500;
   var FALLBACK = "Sorry, I can't answer right now. Please email " + EMAIL + " and we'll reply within 24 hours.";
 
-  var GREETING = "Hi! Ask me anything about The Code Cipher, our apps Tabulo and Optipixa, or our services.";
+  var GREETING = "Hi! Ask me anything about The Code Cipher, our products (the Free Invoice Generator, Tabulo and Optipixa) or our services.";
   var QUICK = [
     {
       q: 'What services do you offer?',
       a: 'We offer five services: digital marketing, mobile app development for iOS and Android, AI voice and chat agents for business, large-scale web applications, and technical consultation for new or legacy projects. Ask about any of them for more detail.'
     },
     {
-      q: 'Tell me about your apps',
-      a: 'Tabulo is a calculator with tabs: keep several calculations open and link results between them. Optipixa shrinks photos to the exact size online forms ask for, right on your phone. Both are private, ad-free, work offline and are in closed testing on Android.'
+      q: 'Tell me about your products',
+      a: 'The Free Invoice Generator (invoicegenerator.thecodecipher.com) makes an invoice PDF in your browser: any currency and tax, no sign-up, no watermark, nothing uploaded. It is free and live now. Tabulo is a calculator with tabs: keep several calculations open and link results between them. Optipixa shrinks photos to the exact size online forms ask for, right on your phone. Tabulo and Optipixa are private, ad-free, work offline and are in closed testing on Android.'
     },
     {
       q: 'How do I start a project?',

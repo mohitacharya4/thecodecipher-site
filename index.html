@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Code Cipher · Product studio and software services</title>
-  <meta name="description" content="The Code Cipher builds its own private, offline apps, Tabulo and Optipixa, and offers mobile app development, large-scale web applications, AI voice and chat agents, digital marketing and technical consultation.">
+  <meta name="description" content="The Code Cipher builds its own private products, the Free Invoice Generator, Tabulo and Optipixa, and offers mobile app development, large-scale web applications, AI voice and chat agents, digital marketing and technical consultation.">
   <link rel="canonical" href="https://thecodecipher.com/">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://thecodecipher.com/">
   <meta property="og:title" content="The Code Cipher · Product studio and software services">
-  <meta property="og:description" content="A product engineering studio. We ship our own apps, Tabulo and Optipixa, and build mobile apps, web platforms and AI agents for businesses.">
+  <meta property="og:description" content="A product engineering studio. We ship our own products, the Free Invoice Generator, Tabulo and Optipixa, and build mobile apps, web platforms and AI agents for businesses.">
   <meta property="og:image" content="https://thecodecipher.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -53,6 +53,18 @@
         "@id": "https://thecodecipher.com/#website",
         "name": "The Code Cipher",
         "url": "https://thecodecipher.com/",
+        "publisher": { "@id": "https://thecodecipher.com/#org" }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Free Invoice Generator",
+        "url": "https://invoicegenerator.thecodecipher.com/",
+        "description": "Make an invoice PDF on any device. Free, no sign-up, no watermark, and nothing is uploaded.",
+        "operatingSystem": "Any (web browser)",
+        "applicationCategory": "BusinessApplication",
+        "browserRequirements": "Requires JavaScript",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "image": "https://thecodecipher.com/assets/invoice-icon.png",
         "publisher": { "@id": "https://thecodecipher.com/#org" }
       },
       {
@@ -116,6 +128,8 @@
         <a class="button button--ghost" href="#services">See our services</a>
       </p>
       <p class="now">
+        <span class="now-label">Live on the web</span>
+        <a href="#invoice-generator"><img src="assets/invoice-icon.png" alt="" width="28" height="28">Invoice Generator</a>
         <span class="now-label">Testing on Android</span>
         <a href="#tabulo"><img src="assets/tabulo-icon.png" alt="" width="28" height="28">Tabulo</a>
         <a href="#optipixa"><img src="assets/optipixa-icon.png" alt="" width="28" height="28">Optipixa</a>
@@ -123,9 +137,37 @@
     </section>
 
     <section id="products" class="section wrap" aria-labelledby="products-title">
-      <h2 id="products-title" class="eyebrow">Products <span class="count">2</span></h2>
+      <h2 id="products-title" class="eyebrow">Products <span class="count">3</span></h2>
 
       <div class="products">
+        <article class="product" id="invoice-generator" style="--tint: #2648d8">
+          <div class="shots">
+            <figure class="phone phone--back"><img src="assets/shots/invoice-editor.jpg" alt="The invoice editor on a phone, with line items and a running total of US$2,750" width="320" height="640" loading="lazy" decoding="async"></figure>
+            <figure class="phone phone--front"><img src="assets/shots/invoice-preview.jpg" alt="A finished invoice PDF from Northwind Studio to Acme Bakery, previewed on a phone" width="320" height="640" loading="lazy" decoding="async"></figure>
+          </div>
+          <div class="product-head">
+            <img class="product-icon" src="assets/invoice-icon.png" alt="" width="64" height="64">
+            <div>
+              <h3>Free Invoice Generator</h3>
+              <p class="kind">Invoice maker for the web</p>
+            </div>
+          </div>
+          <p class="product-line">Fill in your details, your client and what you sold, and the invoice PDF updates as you type. Download it or share it from your phone in one tap.</p>
+          <ul class="facts">
+            <li>Any currency, with GST, VAT or sales tax</li>
+            <li>Four templates, plus your logo and signature</li>
+            <li>The PDF is made on your device; nothing is uploaded</li>
+            <li>Free, no watermark, no account</li>
+          </ul>
+          <div class="product-foot">
+            <span class="status">Web · free, live now</span>
+            <p class="product-links">
+              <a class="button" href="https://invoicegenerator.thecodecipher.com/">Make an invoice <span aria-hidden="true">→</span></a>
+              <a href="https://invoicegenerator.thecodecipher.com/privacy">Privacy policy</a>
+            </p>
+          </div>
+        </article>
+
         <article class="product" id="tabulo" style="--tint: #1f63ad">
           <div class="shots">
             <figure class="phone phone--back"><img src="assets/shots/tabulo-scientific.jpg" alt="Tabulo's scientific keypad in dark mode" width="320" height="653" loading="lazy" decoding="async"></figure>

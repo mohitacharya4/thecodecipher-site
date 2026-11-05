@@ -213,6 +213,7 @@ Contact: thecodecipher@gmail.com · Book a call: https://cal.com/thecodecipher/1
 
 - [Home](${SITE.url}/): products, services and contact
 - [Blog](${SITE.url}/blog/): guides and field notes
+- [Free Invoice Generator](https://invoicegenerator.thecodecipher.com/): free web app that makes invoice PDFs on any device, no sign-up, nothing uploaded
 - [Tabulo](https://tabulo.thecodecipher.com/): multi-tab calculator for Android
 - [Optipixa](https://optipixa.thecodecipher.com/): photo compressor for Android that hits exact file sizes offline
 

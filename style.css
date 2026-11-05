@@ -212,6 +212,7 @@ section[id], article[id] { scroll-margin-top: 84px; }
 }
 .now a:hover { border-color: var(--accent); }
 .now img { border-radius: 8px; }
+.now a + .now-label { margin-left: 12px; }
 
 /* Sections */
 .section {
@@ -909,6 +910,7 @@ section[id], article[id] { scroll-margin-top: 84px; }
 }
 @media (max-width: 560px) {
   .now-label { flex-basis: 100%; }
+  .now a + .now-label { margin: 6px 0 0; }
   .hero-actions .button { flex: 1 1 auto; text-align: center; }
   .product-icon { width: 56px; height: 56px; border-radius: 14px; }
 }
